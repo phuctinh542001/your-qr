@@ -37,6 +37,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: scroll;
 }
 
 header {
@@ -114,6 +115,7 @@ header {
 }
 
 .qr__config {
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -149,26 +151,6 @@ header {
     color: var(--primary-color);
     background-color: rgb(233, 233, 233);
 }
-
-/* .config__btn .config__title:nth-child(1):hover~.config__line--active {
-    left: 0px;
-}
-
-.config__btn .config__title:nth-child(2):hover~.config__line--active {
-    left: 160px;
-}
-
-.config__btn .config__title:nth-child(3):hover~.config__line--active {
-    left: 320px;
-}
-
-.config__btn .config__title:nth-child(4):hover~.config__line--active {
-    left: 480px;
-}
-
-.config__btn .config__title:nth-child(5):hover~.config__line--active {
-    left: 640px;
-} */
 
 .config__title i {
     font-size: 20px;
@@ -216,6 +198,8 @@ header {
     align-items: center;
     grid-gap: 16px;
     grid-template-columns: 30% 70%;
+    animation: tabContent 0.2s linear;
+    overflow: hidden;
 }
 
 .config__content.active  div {
@@ -308,6 +292,17 @@ header {
     justify-content: center;
 }
 
+@keyframes tabContent {
+    0% {
+        transform: translateY(10%);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 @media (min-width: 769px) {
     .qr__config {
         width: 80%;
@@ -323,7 +318,7 @@ header {
     }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 576px) and (max-width: 768px) {
     .form__main {
         width: 92%;
         flex-direction: column;
@@ -347,7 +342,6 @@ header {
     }
 
     .qr__config {
-        margin-bottom: 20px;
         width: 100%;
         flex-direction: row;
         align-items: flex-start;
@@ -355,7 +349,6 @@ header {
 
     .qr__config .config__btn {
         flex: 0 0 160px;
-        /* width: 120px; */
         height: 300px;
         flex-direction: column;
         justify-content: flex-start;
@@ -388,6 +381,87 @@ header {
 
     .container {
         padding: 4px;
+    }
+
+    .color__gradient input[type="radio"] {
+        margin: 0 4px 0 12px;
+    }
+}
+
+@media (max-width: 575px) {
+    .form__main {
+        width: 92%;
+        flex-direction: column;
+    }
+    .form__main input {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    .qr__content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .config__content.active {
+        padding: 12px;
+        display: grid;
+        align-items: center;
+        grid-gap: 16px;
+        grid-template-columns: 100%;
+    }
+
+    .qr__config {
+        width: 100%;
+        flex-direction: row;
+        align-items: flex-start;
+        box-shadow: none;
+    }
+
+    .qr__config .config__btn {
+        flex: 0 0 80px;
+        /* width: 120px; */
+        height: 400px;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .config__btn .config__title {
+        width: 100%;
+        height: 80px;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .config__btn .config__title:active {
+        color: white;
+        background-color: var(--primary-color);
+    }
+
+    .config__title span {
+        margin: 0;
+    }
+
+    .config__line {
+        display: none;
+    }
+
+    .config__line--active {
+        display: none;
+    }
+
+    .config__content.active .qr__image--file {
+        flex-direction: column;
+    }
+
+    .config__content.active .qr__image--file input {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .container {
+        padding: 0;
     }
 
     .color__gradient input[type="radio"] {

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./assets/css/all.css"> 
+  <link rel="stylesheet" href="./assets/css/style.css"> 
+
+  <title>YourQR</title>
+</head>
+<body>
+  <header>
+    <div class="header__logo">
+      <img src="./assets/img/yourQR.png" alt="">
+    </div>
+    <div class="header__link">
+      <a href="">GitHub</a>
+    </div>
+  </header>
+
+  <div id="main">
+    <section class="container qr__input">
+      <div class="qr__content">
+        <form action="" id="form__main" class="form__main">
+            <input type="text">
+            <button>Tạo</button>
+        </form>
+      </div>
+    </section>
+    <section class="container">
+      <div class="qr__content">
+        <!-- Tùy chỉnh mã QR -->
+        <form id="qr__config" class="qr__config">
+            <!-- Tiêu đề của nội dung tùy chỉnh -->
+            <ul class="config__btn">
+              <li class="config__title active" data-index="1">
+                <i class="fa-solid fa-bars-staggered"></i>
+                <span>Chung</span>
+              </li>
+              <li class="config__title" data-index="2">
+                <i class="fa-regular fa-image"></i>
+                <span>Hình ảnh</span>
+              </li>
+              <li class="config__title" data-index="3">
+                <i class="fa-solid fa-circle"></i>
+                <span>Dấu chấm</span>
+              </li>
+              <li class="config__title" data-index="4">
+                <i class="fa-regular fa-square"></i>
+                <span>Ô Góc</span>
+              </li>
+              <li class="config__title" data-index="5">
+                <i class="fa-regular fa-file-image"></i>
+                <span>Nền</span>
+              </li>
+              <div class="config__line"></div>
+              <div class="config__line--active"></div>
+            </ul>
+            <!-- Nội dung tùy chỉnh -->
+            <ul class="config__textbox">
+              <!-- Tùy chỉnh: Chung -->
+              <li class="config__content active">
+                <label for="qr-type-number">Mật độ chấm</label>
+                <div>
+                  <input id="qr-type-number" name="qr-type-number" type="number" min="0" max="40" value="0">
+                </div>
+
+                <label for="qr-mode">Kiểu dữ liệu đầu vào</label>
+                <div>
+                  <select id="qr-mode" name="qr-mode">
+                    <option value="Numeric">Numeric</option>
+                    <option value="Alphanumeric">Alphanumeric</option>
+                    <option value="Byte" selected>Byte</option>
+                    <option value="Kanji">Kanji</option>
+                </select>
+                </div>
+
+                <label for="qr-width">Chiều dài</label>
+                <div>
+                  <input id="qr-width" name="qr-width" type="number" min="10" max="300" value="300">
+                </div>
+
+                <label for="qr-height">Chiều rộng</label>
+                <div>
+                  <input id="qr-height" name="qr-height" type="number" min="10" max="300" value="300">
+                </div>
+                
+                <label for="qr-margin">Canh lề</label>
+                <div>
+                  <input id="qr-margin" name="qr-margin" type="number" min="0" max="10000" value="0"/>
+                </div>
+              </li>
+              <!-- Tùy chình: Hình ảnh -->
+              <li class="config__content">
+                <label for="qr-image-file">Image file</label>
+                <div class="qr__image--file">
+                  <input id="qr-image-file" name="qr-image-file" type="file">
+                  <button>Hủy</button>
+                </div>
+
+                <label for="qr-image-size">Kích thướt ảnh</label>
+                <div>
+                  <input id="qr-image-size" name="qr-image-size" type="number" min="0" max="1" step="0.1" value="0.4"/>
+                </div>
+
+                <label for="qr-image-margin">Căn lề ảnh</label>
+                <div>
+                  <input id="qr-image-margin" name="qr-image-margin" type="number" min="0" max="10000" value="0"/>
+                </div>
+
+                <label for="qr-image-hide-dots">Ẩn dấu chấm nền</label>
+                <div>
+                  <input id="qr-image-hide-dots" name="qr-image-hide-dots" type="checkbox" checked>
+                </div>
+              </li>
+
+              <!-- Tùy chỉnh: Dấu chấm -->
+              <li class="config__content">
+                <label for="qr-dots-type">Kiểu dấu chấm</label>
+                <div>
+                  <select id="qr-dots-type" name="qr-dots-type">
+                    <option value="square" selected>Square</option>
+                    <option value="dots">Dots</option>
+                    <option value="rounded">Rounded</option>
+                    <option value="extra-rounded">Extra rounded</option>
+                    <option value="classy">Classy</option>
+                    <option value="classy-rounded">Classy rounded</option>
+                  </select>
+                </div>
+
+                <label for="qr-dots-color">Kiểu màu</label>
+                <select name="qr-dots-color" id="qr-dots-color" class="color__type">
+                  <option value="color-type-single">Màu đơn</option>
+                  <option value="color-type-gradient">Màu chuyển</option>
+                </select>
+
+                <!-- Màu đơn -->
+                <label class="color__single qr-dots-color-single" for="qr-dots-color-single-color">Màu</label>
+                <div class="color__single qr-dots-color-single">
+                  <input id="qr-dots-color-single-color" name="qr-dots-color-single-color" type="color" value="#000000">
+                </div>
+                
+                <!-- Màu đôi -->
+                <label class="color__gradient qr-dots-color-gradient" for="qr-dots-color-gradient-color">Màu</label>
+                <div id="qr-dots-color-gradient-color" class="color__gradient qr-dots-color-gradient">
+                  <input id="qr-dots-color-gradient-color1" name="qr-dots-color-gradient-color1" type="color" value="#000000">
+                  <input id="qr-dots-color-gradient-color2" name="qr-dots-color-gradient-color2" type="color" value="#000000">
+                </div>
+
+                <label class="color__gradient qr-dots-color-gradient">Loại chuyển màu</label>
+                <div class="color__gradient qr-dots-color-gradient">
+                    <input id="qr-dots-color-gradient-type1" name="qr-dots-color-gradient-type" type="radio" value="linear" checked>
+                    <label for="qr-dots-color-gradient-type1">Tuyến tính</label>
+
+                    <input id="qr-dots-color-gradient-type2" name="qr-dots-color-gradient-type" type="radio" value="radial">
+                    <label for="qr-dots-color-gradient-type2">Xuyên tâm</label>
+                </div>
+
+                <label class="color__gradient qr-dots-color-gradient" for="qr-dots-color-gradient-rotation">Độ xoay</label>
+                <div class="color__gradient qr-dots-color-gradient">
+                  <input id="qr-dots-color-gradient-rotation" name="qr-dots-color-gradient-rotation" type="number" min="0" max="360" value="0"/>
+                </div>
+              </li>
+
+              <!-- Tùy chỉnh: Ô góc -->
+              <li class="config__content">
+                <label for="qr-corners-square-type">Kiểu vòng ngoài</label>
+                <div>
+                  <select id="qr-corners-square-type" name="qr-corners-square-type">
+                    <option value="square" selected>Square</option>
+                    <option value="dot">Dot</option>
+                    <option value="extra-rounded">Extra rounded</option>
+                  </select>
+                </div>
+
+                <label for="qr-corners-square-color">Kiểu màu</label>
+                <select id="qr-corners-square-color" name="qr-corners-square-color" class="color__type">
+                  <option value="color-type-single">Màu đơn</option>
+                  <option value="color-type-gradient">Màu chuyển</option>
+                </select>
+
+                <!-- Màu đơn -->
+                <label class="color__single qr-corners-square-color-single" for="qr-corners-square-color-single-color">Màu</label>
+                <div class="color__single qr-corners-square-color-single">
+                  <input id="qr-corners-square-color-single-color" name="qr-corners-square-color-single-color" type="color" value="#000000">
+                </div>
+                
+                <!-- Màu đôi -->
+                <label class="color__gradient qr-corners-square-color-gradient" for="qr-corners-square-color-gradient-color">Màu</label>
+                <div id="qr-corners-square-color-gradient-color" class="color__gradient qr-corners-square-color-gradient">
+                  <input id="qr-corners-square-color-gradient-color1" name="qr-corners-square-color-gradient-color1" type="color" value="#000000">
+                  <input id="qr-corners-square-color-gradient-color2" name="qr-corners-square-color-gradient-color2" type="color" value="#000000">
+                </div>
+
+                <label class="color__gradient qr-corners-square-color-gradient">Loại chuyển màu</label>
+                <div class="color__gradient qr-corners-square-color-gradient">
+                    <input id="qr-corners-square-color-gradient-type1" name="qr-corners-square-color-gradient-type" value="linear" type="radio" checked>
+                    <label for="qr-corners-square-color-gradient-type1">Tuyến tính</label>
+                    
+                    <input id="qr-corners-square-color-gradient-type2" name="qr-corners-square-color-gradient-type" value="radial" type="radio">
+                    <label for="qr-corners-square-color-gradient-type2">Xuyên tâm</label>
+                </div>
+
+                <label class="color__gradient qr-corners-square-color-gradient" for="qr-corners-square-color-gradient-rotation">Độ xoay</label>
+                <div class="color__gradient qr-corners-square-color-gradient">
+                  <input id="qr-corners-square-color-gradient-rotation" name="qr-corners-square-color-gradient-rotation" type="number" min="0" max="360" value="0"/>
+                </div>
+
+                <label for="qr-corners-dots-type">Kiểu dấu chấm</label>
+                <div>
+                  <select id="qr-corners-dots-type" name="qr-corners-dots-type">
+                    <option value="square" selected>Square</option>
+                    <option value="dot">Dot</option>
+                  </select>
+                </div>
+
+                <label for="qr-corners-dots-color">Kiểu màu</label>
+                <select id="qr-corners-dots-color" name="qr-corners-dots-color" class="color__type">
+                  <option value="color-type-single">Màu đơn</option>
+                  <option value="color-type-gradient">Màu chuyển</option>
+                </select>
+
+                <!-- Màu đơn -->
+                <label class="color__single qr-corners-dots-color-single" for="qr-corners-dots-color-single-color">Màu</label>
+                <div class="color__single qr-corners-dots-color-single">
+                  <input id="qr-corners-dots-color-single-color" name="qr-corners-dots-color-single-color" type="color" value="#000000">
+                </div>
+                
+                <!-- Màu đôi -->
+                <label class="color__gradient qr-corners-dots-color-gradient" for="qr-corners-dots-color-gradient-color">Màu</label>
+                <div id="qr-corners-dots-color-gradient-color" class="color__gradient qr-corners-dots-color-gradient">
+                  <input id="qr-corners-dots-color-gradient-color1" name="qr-corners-dots-color-gradient-color1" type="color" value="#000000">
+                  <input id="qr-corners-dots-color-gradient-color2" name="qr-corners-dots-color-gradient-color2" type="color" value="#000000">
+                </div>
+
+                <label class="color__gradient qr-corners-dots-color-gradient">Loại chuyển màu</label>
+                <div class="color__gradient qr-corners-dots-color-gradient">
+                    <input id="qr-corners-dots-color-gradient-type1" name="qr-corners-dots-color-gradient-type" value="linear" type="radio" checked>
+                    <label for="qr-corners-dots-color-gradient-type1">Tuyến tính</label>
+                    
+                    <input id="qr-corners-dots-color-gradient-type2" name="qr-corners-dots-color-gradient-type" value="radial" type="radio">
+                    <label for="qr-corners-dots-color-gradient-type2">Xuyên tâm</label>
+                </div>
+
+                <label class="color__gradient qr-corners-dots-color-gradient" for="qr-corners-dots-color-gradient-rotation">Độ xoay</label>
+                <div class="color__gradient qr-corners-dots-color-gradient">
+                  <input id="qr-corners-dots-color-gradient-rotation" name="qr-corners-dots-color-gradient-rotation" type="number" min="0" max="360" value="0"/>
+                </div>
+              </li>
+
+              <!-- Tùy chỉnh: Nền -->
+              <li class="config__content">
+                <label for="qr-background-color">Kiểu màu</label>
+                <select id="qr-background-color" name="qr-background-color" class="color__type">
+                  <option value="color-type-single">Màu đơn</option>
+                  <option value="color-type-gradient">Màu chuyển</option>
+                </select>
+
+                <!-- Màu đơn -->
+                <label class="color__single qr-background-color-single" for="qr-background-color-single-color">Màu</label>
+                <div class="color__single qr-background-color-single">
+                  <input id="qr-background-color-single-color" name="qr-background-color-single-color" type="color" value="#ffffff">
+                </div>
+                
+                <!-- Màu đôi -->
+                <label class="color__gradient qr-background-color-gradient" for="qr-background-color-gradient-color">Màu</label>
+                <div id="qr-background-color-gradient-color" class="color__gradient qr-background-color-gradient">
+                  <input id="qr-background-color-gradient-color1" name="qr-background-color-gradient-color1" type="color" value="#ffffff">
+                  <input id="qr-background-color-gradient-color2" name="qr-background-color-gradient-color2" type="color" value="#ffffff">
+                </div>
+
+                <label class="color__gradient qr-background-color-gradient">Loại chuyển màu</label>
+                <div class="color__gradient qr-background-color-gradient">
+                    <input id="qr-background-color-gradient-type1" name="qr-background-color-gradient-type" value="linear" type="radio" checked>
+                    <label for="qr-background-color-gradient-type1">Tuyến tính</label>
+                    
+                    <input id="qr-background-color-gradient-type2" name="qr-background-color-gradient-type" value="radial" type="radio">
+                    <label for="qr-background-color-gradient-type2">Xuyên tâm</label>
+                </div>
+
+                <label class="color__gradient qr-background-color-gradient" for="qr-background-color-gradient-rotation">Độ xoay</label>
+                <div class="color__gradient qr-background-color-gradient">
+                  <input id="qr-background-color-gradient-rotation" name="qr-background-color-gradient-rotation" type="number" min="0" max="360" value="0"/>
+                </div>
+              </li>
+            </ul>
+        </form>
+        <!-- Vùng hiển thị mã QR -->
+        <div class="qr__display">
+          <button class="qr__apply">Áp dụng</button>
+          <div id="qr__code"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  
+  <script type="text/javascript" src="./assets/js/qr-code-styling.js"></script>
+  <script type="text/javascript" src="./assets/js/script.js"></script>
+</body>
+</html>
